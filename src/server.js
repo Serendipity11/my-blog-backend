@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const { MongoClient } = require("mongodb");
 
 const articlesInfo = {
   "learn-react": {
@@ -19,6 +20,11 @@ app.use(bodyParser.json());
 
 app.get("/api/articles/:name", (req, res) => {
   const articleName = req.params.name;
+  const client = MongoClient.connect("mongodb://localhost:27017", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  const db = client.db("myblog");
 });
 
 app.post("/api/articles/:name/add-comments", (req, res) => {
