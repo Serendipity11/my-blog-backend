@@ -29,7 +29,7 @@ app.get("/api/articles/:name", async (req, res) => {
     const articleInfo = await db
       .collection("articles")
       .findOne({ name: articleName });
-    res.status(200).json(articlesInfo);
+    res.status(200).json(articleInfo);
     client.close();
   } catch (error) {
     res.status(500).json({ message: "Error connecting to db", error });
