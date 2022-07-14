@@ -25,6 +25,9 @@ app.get("/api/articles/:name", (req, res) => {
     useUnifiedTopology: true,
   });
   const db = client.db("myblog");
+  const articleInfo = db.collection("articles").findOne({ name: articleName });
+  res.status(200).json(articlesInfo);
+  client.close();
 });
 
 app.post("/api/articles/:name/add-comments", (req, res) => {
