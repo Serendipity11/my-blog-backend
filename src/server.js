@@ -61,7 +61,7 @@ app.post("/api/articles/:name/add-comments", (req, res) => {
       .collection("articles")
       .findOne({ name: articleName });
     res.status(200).json(updatedArticleInfo);
-  });
+  }, res);
 });
 
 app.listen(8000, () => console.log("Listening on port 8000"));
